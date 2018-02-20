@@ -1,21 +1,41 @@
-﻿body{
-    margin:0;
-    padding:0;
-    background: url(pic6.jpg);
-    background-size: cover;
-    background-position:center;
-    font-family: sans-serif;
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+section {
+    width: 100%;
+    height: 100vh;
+    background-image:url(study.jpeg); 
+    background-size:cover;                    
+    background-repeat: no-repeat;
+    background-position:center center;
+    font-family: sans-serif; 
 }
 
 .loginbox{
-    width:320px;
-    height:420px;
-    background: #8fc124;
-    color: #fff;
-    top:50%;
-    left:50%;
     position:absolute;
+    top: 50%;
+    left:50%;
     transform: translate(-50%,-50%);
+    width: 640px;
+    height: 480px;
+}
+.loginbox .left {
+    float: left;
+    width: 320px;
+    height: 480px;
+    background: rgba(14, 52, 3, 0.9);
+    color: #fff;
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.loginbox .right{
+    float: right;
+    width:320px;
+    height:480px;
+    background: rgba(143, 193, 36, 0.8);
+    color: #fff;
     box-sizing: border-box;
     padding: 70px 30px;
 }
@@ -31,60 +51,101 @@
 
 h1{
     margin:0;
-    padding: 0 0 20px;
+    padding: 0 0 5px;
     text-align: center;
     font-size: 22px;
+    color: #ff6a00;
 }
 
-.loginbox p{
+h2{
     margin:0;
-    padding:0 0 10px;
-    font-weight: bold;
+    padding: 0 0 5px;
+    text-align: center;
+    font-size: 22px;
+    color: #fff;
 }
 
-.loginbox input{
+.formbox p{
+    margin:0;
+    padding:0 0 0px;
+    font-weight: normal;
+    font-size: 12px;
+    color: #000;
+}
+
+.formbox input{
     width: 100%;
     margin-bottom: 20px;
 }
 
-.loginbox input[type="text"], input[type="password"]
+.formbox input[type="text"], input[type="password"]
 {
     color: #000;
     border: none;
     border-bottom: 1px solid #fff;
     background: #fff;
     outline: none;
-    height: 40px;
+    height: 30px;
     font-size: 16px;
     border-radius:20px;
     padding: 0 0 0;
 }
 
-.loginbox input[type="submit"]
+.formbox input[type="submit"]
 {
     border: none;
     outline: none;
-    height: 40px;
+    height: 30px;
     background:#ff6a00;
     color:#fff;
     font-size: 18px;
     border-radius:20px;
 }
 
-.loginbox input[type="submit"]:hover
+.formbox input[type="submit"]:hover
 {
     cursor: pointer;
     background: #ff0000;
     color: #000;
 }
 
-.loginbox a{
+.formbox a{
     text-decoration:none;
     font-size: 12px;
     line-height: 20px;
     color: #000;
 }
 
-.loginbox a:hover {
+.formbox a:hover {
      color: #ff0000;
     }
+
+.SignUpbox{
+    width: 640px;
+    height: 480px;
+    position:absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    
+}
+.SignUpbox .left {
+    float: left;
+    width: 320px;
+    height: 480px;
+    background: rgba(14, 52, 3, 0.9);
+    color: #fff;
+    box-sizing: border-box;
+    padding: 70px 30px;
+}
+
+.SignUpbox .right{
+    float: right;
+    width:320px;
+    height:480px;
+    background: rgba(143, 193, 36, 0.8);
+    color: #fff;
+    box-sizing: border-box;
+    padding: 100px 30px;
+}
+
