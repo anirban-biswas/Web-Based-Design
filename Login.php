@@ -8,9 +8,9 @@
 </head>
 <body>
     <section>
+    <h1>Study Group</h1>
     <div class="loginbox">
         <div class = "left">
-            <h1>Study Group</h1>
             <p>This is a one of a kind platform providing 
             students an opportunity to share their knowledge with their peers. Study Group helps you find peers in your university to do group study. It matches your peers with your need and their need so you can help eachother succeed in your classes.</p>
         </div>
