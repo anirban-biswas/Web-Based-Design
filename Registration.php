@@ -25,6 +25,7 @@
             <h1>Registration Form</h1>
 			<?php
 			
+				$Squery = "SELECT `name` FROM `school`";
 				if(isset($_POST['username'], $_POST['lastname'], $_POST['submit'],
 						 $_POST['password'], $_POST['rpassword'], $_POST['email'], $_POST['firstname']))
 				{
@@ -34,37 +35,87 @@
 					$password = $_POST['password'];
 					$rpassword = $_POST['rpassword'];
 					$email = $_POST['email'];
-					//echo 'cool';
 					if(isset ($_POST['school']))
 					{$school = $_POST['school'];}
 						if(!empty($username) && !empty($firstname) && !empty($lastname) && !empty($password) && !empty($rpassword) && !empty($email))
-							echo'cool';
+						{
+							$Uquery = "SELECT `username` FROM `user` WHERE `username` = '".mysqli_real_escape_string($conn, $username)."'";
+							$Equery = "SELECT `email` FROM `user` WHERE `email` = '".mysqli_real_escape_string($conn, $email)."'";
+							if(mysqli_num_rows(mysqli_query($conn, $Uquery)) == 0)
+							{
+								if(mysqli_num_rows(mysqli_query($conn, $Equery)) == 0)
+								{
+									if($school == 'none')
+									{
+										$query = "INSERT INTO `user` VALUES('".mysqli_real_escape_string($conn, $username)."','".mysqli_real_escape_string($conn, $password)."','".mysqli_real_escape_string($conn, $firstname)."','".mysqli_real_escape_string($conn, $lastname)."','".mysqli_real_escape_string($conn, $email)."',NULL)";
+										
+										if($query_run = mysqli_query($conn, $query))
+										{
+											$_SESSION['user_name'] = $username;
+											header('Location: reg.php');
+										}
+										else
+											echo 'what';
+									}
+									else{
+										$school_query = "SELECT `id` FROM `school` WHERE `name` = '".mysqli_real_escape_string($conn, $school)."'";
+										if($schoolq = $query_run = mysqli_query($conn, $school_query))
+										{
+											$row = mysqli_fetch_assoc($schoolq);
+											$schoolID = $row[id];
+											$query = "INSERT INTO `user` VALUES('".mysqli_real_escape_string($conn, $username)."','".mysqli_real_escape_string($conn, $password)."','".mysqli_real_escape_string($conn, $firstname)."','".mysqli_real_escape_string($conn, $lastname)."','".mysqli_real_escape_string($conn, $email)."','".mysqli_real_escape_string($conn, $schoolID)."')";
+										}
+										if($query_run = mysqli_query($conn, $query))
+										{
+											$_SESSION['user_name'] = $username;
+											header('Location: reg.php');
+										}
+										else
+											echo 'why';
+									}
+								}
+								else{
+									echo 'email is already being used';
+								}
+							}
+								else{
+									echo 'username is already taken';
+								}
+						}
 						else
 							echo 'please input all required fields';
 				}
-				else
-				{echo 'please input all required fields';}
 			?>
-        <form action = "Registration.php" method="POST">
-			<?php //echo $_POST['username'] ?>
+        <form action = "<?php echo $current_file ?>" method="POST">
             <h4>First Name<br>
             <input type="text" name="firstname" id = "firstname" value = "<?php echo @$firstname ?>" placeholder="  Enter first name" />
             <br>Last Name<br>
             <input type="text" name="lastname" value = "<?php echo @$lastname ?>" placeholder="  Enter last name" />
             <br>University/College (optional)<br>
-            <input type="text" name="school" value = "<?php echo @$school ?>" placeholder="  Enter University/College name" />
+            <select name="school">
+			<?php
+				if ($Squery_run = mysqli_query($conn, $Squery))
+				{
+					if(mysqli_num_rows($Squery_run) > 0)
+					{
+						echo '<option value= "none"> none';
+						while ( $row = mysqli_fetch_assoc($Squery_run))
+						{
+							echo '<option value= "'.$row["name"].'"> '.$row["name"].'';
+						}
+					}
+					else
+						echo '<option value="notAvailable">Selection currently empty</option>';
+					
+				}
+				else
+				{
+					echo '<option value="notAvailable">Selection currently empty</option>';
+				}
+			?>
+			</select>
             <br>Email Address<br>
             <input type="text" name="email" value = "<?php echo @$email ?>" placeholder="  Enter your email" />
-           <!-- <br>Contact Number<br>
-            <input type="text" name="number" placeholder="  Enter Contact Number" /></h4> -->
-			
-      <!--  </form>
-            </div>
-        </div>
-        <div class = "right" >
-            <div class="formbox">
-        
-        <form action = "Registration.php" method ="POST"> -->
             <h4>Create Username<br>
             <input type="text" name="username" value = "<?php  echo @$username ?>" placeholder="  Enter Username" />
             <br>Password<br>

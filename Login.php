@@ -56,7 +56,7 @@
             <input type="submit" name="submit" value="Login" />
             <a href="#">Forgot your Password?</a><br />
             <a href="#">Forgot your Username?</a>
-            <p>Not a member yet? <a href="Registration.php"> Register here!</a></p>
+            <p>Not a member yet? <a href="reg.php"> Register here!</a></p>
         </form>
                 </div>
             </div>
