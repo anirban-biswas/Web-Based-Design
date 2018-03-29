@@ -213,5 +213,7 @@ h2{
     background-color: rgba(143, 193, 36, 0.8);
 }
 
-.show {display:block;}
+.show {
+    display:block;
+}
 
