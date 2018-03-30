@@ -19,10 +19,10 @@
       <a href="groups.html"><i class="fa fa-users fa-2x"></i>Groups</a>
       <a href="people.html"><i class="fa fa-user-plus fa-2x"></i>People</a>
       <a href="settings.html"><i class="fa fa-cog fa-2x"></i>Settings</a>
-      <a href="login.html"><i class="fa fa-sign-out fa-2x"></i>Sign out</a> 
+      <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Log out</a> 
 </div>
 	
-<h1 class=" title titlebg">Study Group</h1>
+	<a href="main.html"><h1 class=" title titlebg">Study Group</h1></a>
 	
 <div class="dropdown">
   <button onclick="dropDown()" class="dropbtn">Select a topic</button>
