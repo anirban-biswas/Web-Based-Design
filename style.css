@@ -2,13 +2,19 @@
     margin: 0;
     padding: 0;
 }
+
+h1{
+    margin: 10px 0 0 100px;
+    padding: 0 0 0px;
+    text-align: left;
+    font-size: 70px;
+    font-family: 'Amatic SC', cursive;
+    color: #ff6a00;
+}
+
 section {
     width: 100%;
     height: 100vh;
-    background-image: url(study.jpeg);
-    background-size:cover;                    
-    background-repeat: no-repeat;
-    background-position:center center;
     font-family: sans-serif; 
 }
 
@@ -47,14 +53,6 @@ section {
     position: absolute;
     top: -50px;
     left: calc(50% - 50px);
-}
-
-h1{
-    margin:0;
-    padding: 0 0 5px;
-    text-align: center;
-    font-size: 22px;
-    color: #ff6a00;
 }
 
 h2{
@@ -122,7 +120,7 @@ h2{
 
 .SignUpbox{
     width: 640px;
-    height: 480px;
+    height: 800px;
     position:absolute;
     top: 50%;
     left:50%;
@@ -132,7 +130,7 @@ h2{
 .SignUpbox .left {
     float: left;
     width: 320px;
-    height: 480px;
+    height: 900px;
     background: rgba(14, 52, 3, 0.7);
     color: #fff;
     box-sizing: border-box;
@@ -142,10 +140,99 @@ h2{
 .SignUpbox .right{
     float: right;
     width:320px;
-    height:480px;
+    height:900px;
     background: rgba(143, 193, 36, 0.7);
     color: #fff;
     box-sizing: border-box;
     padding: 100px 30px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.titlebg{
+  background-color: rgba(143, 193, 36, 0.8);
+  height: 70px
+}
+
+.title{
+    margin: 0 0 0 10px;
+    padding: 0 0 0 80px;
+    font-size: 55px;
+}
+
+.icon-bar {
+    width: 80px; 
+    height: 700px;
+    background-color: rgba(14, 52, 3, 0.9) ;
+    position: fixed;
+}
+
+.icon-bar a {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    transition: all 0.3s ease;
+    color: #ffffff;
+    font-size: 17px;
+}
+
+.icon-bar a:hover {
+    color: rgba(143, 193, 36, 0.8);
+}
+
+.active {
+    background-color: #ff6a00;
+    color: rgba(14, 52, 3, 0.9);
+    }
+
+.dropdown {
+    margin-top: 60px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    width: 800px;
+    background-color: #ff6a00;
+    color: white;
+    padding: 16px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    outline: 0;
+    background: #ff0000;
+}
+
+.dropdown-content {
+    width: 800px;
+    background-color: rgba(14, 52, 3, 0.9) ;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    display: none;
+    position: absolute;
+}
+
+.dropdown-content a {
+    text-align: center;
+    color: white;
+    padding: 12px 16px;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(143, 193, 36, 0.8);
+}
+
+.show {
+    display:block;
 }
 
