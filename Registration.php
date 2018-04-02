@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
-	<?php
+    <?php
 		$dbhost = '127.0.0.1';
 		$dbuser = 'root';
 		$dbpass = '';
@@ -20,10 +20,8 @@
 			?>
     <section>
     <div class="SignUpbox">
-        <div class = "left">
-            <div class="formbox">
-            <h1>Registration Form</h1>
-			<?php
+        <h1>Registration Form</h1>
+        <?php
 			
 				$Squery = "SELECT `name` FROM `school`";
 				if(isset($_POST['username'], $_POST['lastname'], $_POST['submit'],
@@ -62,7 +60,7 @@
 										if($schoolq = $query_run = mysqli_query($conn, $school_query))
 										{
 											$row = mysqli_fetch_assoc($schoolq);
-											$schoolID = $row[id];
+											$schoolID = $row['id'];
 											$query = "INSERT INTO `user` VALUES('".mysqli_real_escape_string($conn, $username)."','".mysqli_real_escape_string($conn, $password)."','".mysqli_real_escape_string($conn, $firstname)."','".mysqli_real_escape_string($conn, $lastname)."','".mysqli_real_escape_string($conn, $email)."','".mysqli_real_escape_string($conn, $schoolID)."')";
 										}
 										if($query_run = mysqli_query($conn, $query))
@@ -71,7 +69,7 @@
 											header('Location: reg.php');
 										}
 										else
-											echo 'why';
+											echo 'why '. $query;
 									}
 								}
 								else{
@@ -87,11 +85,16 @@
 				}
 			?>
         <form action = "<?php echo $current_file ?>" method="POST">
-            <h4>First Name<br>
-            <input type="text" name="firstname" id = "firstname" value = "<?php echo @$firstname ?>" placeholder="  Enter first name" />
-            <br>Last Name<br>
-            <input type="text" name="lastname" value = "<?php echo @$lastname ?>" placeholder="  Enter last name" />
-            <br>University/College (optional)<br>
+            <table class= "formbox">
+                <h4>
+                <tr>
+            <th>First Name<br>
+            <input type="text" name="firstname" id = "firstname" value = "<?php echo @$firstname ?>" placeholder="  Enter first name" /></th>
+            <th>Last Name<br>
+                <input type="text" name="lastname" value = "<?php echo @$lastname ?>" placeholder="  Enter last name" /></th></tr>
+            <tr><th>Email Address<br>
+                <input type="text" name="email" value = "<?php echo @$email ?>" placeholder="  Enter your email" /></th>
+                <th>University/College (optional)<br>
             <select name="school">
 			<?php
 				if ($Squery_run = mysqli_query($conn, $Squery))
@@ -113,21 +116,20 @@
 					echo '<option value="notAvailable">Selection currently empty</option>';
 				}
 			?>
-			</select>
-            <br>Email Address<br>
-            <input type="text" name="email" value = "<?php echo @$email ?>" placeholder="  Enter your email" />
-            <h4>Create Username<br>
-            <input type="text" name="username" value = "<?php  echo @$username ?>" placeholder="  Enter Username" />
-            <br>Password<br>
-            <input type="password" name="password" placeholder="  Enter Password" />
-            <br>Re-Enter Password<br>
-            <input type="password" name="rpassword" placeholder="  ReEnter Password" /></h4>
-            <input type="submit" name="submit" value="Sign Up" />
-            <p>Already a member? <a href="Login.php"> Register here!</a></p>
+			</select></th>
+            </tr>
+            <tr><th>Create Username<br>
+                    <input type="text" name="username" value = "<?php  echo @$username ?>" placeholder="  Enter Username" /></th>
+                <th></th></tr>
+            <tr><th>Password<br>
+            <input type="password" name="password" placeholder="  Enter Password" /></th>
+            <th>Re-Enter Password<br>
+                <input type="password" name="rpassword" placeholder="  ReEnter Password" /></th></tr></h4>
+            <tr><th><input type="submit" name="submit" value="Sign Up" />
+            <p>Already a member? <a href="Login.php"> Sign In here!</a></p></th></tr>
+                </table>
         </form>
-                </div>
             </div>
-    </div>
         </section>
 </body>
 </html>
