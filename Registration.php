@@ -20,7 +20,7 @@
 			?>
     <section>
     <div class="SignUpbox">
-        <h1>Registration Form</h1>
+        <h3>Registration Form</h3>
         <?php
 			
 				$Squery = "SELECT `name` FROM `school`";
@@ -126,7 +126,7 @@
             <th>Re-Enter Password<br>
                 <input type="password" name="rpassword" placeholder="  ReEnter Password" /></th></tr></h4>
             <tr><th><input type="submit" name="submit" value="Sign Up" />
-            <p>Already a member? <a href="Login.php"> Sign In here!</a></p></th></tr>
+            <p>Already a member? <a href="index.php"> Sign In here!</a></p></th></tr>
                 </table>
         </form>
             </div>
