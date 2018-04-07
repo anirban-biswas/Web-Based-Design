@@ -112,6 +112,10 @@ h3{
     color: #000;
 }
 
+.formbox th{
+    width: 340px;
+}
+
 .formbox a{
     text-decoration:none;
     font-size: 12px;
