@@ -11,14 +11,14 @@
 	<title>STUDY GROUP</title>
 </head>
 
-<body> 
+<body>
+    <section>
 <div  class="icon-bar" >
       <a class="active" href="main.html"><i class="fa fa-home fa-2x"></i>Home</a>
-      <a href="profile.html"><i class="fa fa-user fa-2x"></i>Profile</a> 
-      <a href="inbox.html"><i class="fa fa-comments fa-2x"></i>Inbox</a> 
-      <a href="groups.html"><i class="fa fa-users fa-2x"></i>Groups</a>
-      <a href="people.html"><i class="fa fa-user-plus fa-2x"></i>People</a>
-      <a href="settings.html"><i class="fa fa-cog fa-2x"></i>Settings</a>
+      <a href="profile.php"><i class="fa fa-user fa-2x"></i>Profile</a> 
+      <a href="inbox.php"><i class="fa fa-comments fa-2x"></i>Inbox</a> 
+      <a href="groups.php"><i class="fa fa-users fa-2x"></i>Groups</a>
+      <a href="people.php"><i class="fa fa-user-plus fa-2x"></i>People</a>
       <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Log out</a> 
 </div>
 	
@@ -52,6 +52,6 @@ window.onclick = function(event) {
   }
 }
 </script>
-
+</section>
 </body>
 </html>

@@ -20,7 +20,7 @@
 			?>
     <section>
     <div class="SignUpbox">
-        <h1>Registration Form</h1>
+        <h3>Registration Form</h3>
         <?php
 			
 				$Squery = "SELECT `name` FROM `school`";
