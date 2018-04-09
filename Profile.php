@@ -19,7 +19,7 @@
       <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Log out</a> 
     </div>
         
-    <a href="main.html"><h1 class="title titlebg position">Study Group</h1></a>
+    <a href="main.php"><h1 class="title titlebg position">Study Group</h1></a>
     
     <div class="profile">
       <img src="avatar.png"/>
