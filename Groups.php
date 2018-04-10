@@ -65,9 +65,9 @@
                     <th rowspan= "3">Members</th>
 					<?php while($mrow = mysqli_fetch_assoc($mquery_run))
 					{
-						if($row['user'] != $_SESSION['user_name'])
+						if($mrow['user'] != $_SESSION['user_name'])
 						{
-						echo "<td>". $row['user'] ."</td>";
+						echo "<td>". $mrow['user'] ."</td>";
 						echo "<tr>";
 						}
 					}
