@@ -1,4 +1,9 @@
     <!DOCTYPE html>
+	
+	<?php
+	require 'core.php';
+	require 'connect.php';
+	?>
 
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -20,14 +25,45 @@
       <a class="active" href="people.php"><i class="fa fa-user-plus fa-2x"></i>People</a>
       <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Log out</a> 
 </div>
+<?php
+		$query = "SELECT * FROM `follows` WHERE `follower` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."'";
+		if($query_run = mysqli_query($conn, $query))
+		{
+			if(mysqli_num_rows($query_run) == 0)
+			{
+				echo 'get some friends, nerd';
+			}
+			else{
+				while ($row = mysqli_fetch_assoc($query_run))
+				{
+					$uquery = "SELECT * FROM `user` WHERE `username` = '".mysqli_real_escape_string($conn, $row['following'])."'";
+					if($uquery_run = mysqli_query($conn, $uquery))
+					{
+						$urow = mysqli_fetch_assoc($uquery_run);
+						$following = $urow['username'];
+						if($urow['school'] != 'NULL')
+						{
+							$schoolID = $urow['school'];
+							$squery = "SELECT `name` FROM `school` WHERE `id` = '".mysqli_real_escape_string($conn, $schoolID)."'";
+							if($squery_run = mysqli_query($conn, $squery))
+							{
+								$school = mysqli_fetch_assoc($squery_run)['name'];
+							}
+						}
+						else
+						{
+						$school = 'N/A';
+						}
+						$subIDquery = "SELECT `subject` FROM "
+		?>	
             <div class= "table">
                 <table>
                 <tr>
                     <th>User Name</th>
-                    <td><a href="profile.php"> Name of the user</a></td>
+                    <td><a href="profile.php"> "<?php echo $following ?>" </a></td>
                     <tr/><tr>
                     <th>School Name</th>
-                    <td>The school name of the user</td>
+                    <td>"<?php echo $school ?>"</td>
                     <tr/><tr>
                     <th>Strength of User</th>
                     <td>Name of the Subjects</td>
@@ -38,4 +74,11 @@
             </div>
         </section>
     </body>
+	<?php
+						
+					}
+				}
+			}
+		}
+		?>
     </html>
