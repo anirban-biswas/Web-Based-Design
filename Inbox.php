@@ -11,7 +11,7 @@
     <body>
         <section>
         <div  class="icon-bar" >
-      <a href="main.php"><i class="fa fa-home fa-2x"></i>Home</a>
+      <a href="index.php"><i class="fa fa-home fa-2x"></i>Home</a>
       <a href="profile.php"><i class="fa fa-user fa-2x"></i>Profile</a> 
       <a class="active" href="inbox.php"><i class="fa fa-comments fa-2x"></i>Inbox</a> 
       <a href="groups.php"><i class="fa fa-users fa-2x"></i>Groups</a>

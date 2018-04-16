@@ -1,7 +1,11 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <?php
 	require 'core.php';
 	require 'connect.php';
+	
+	$parts = parse_url($_SERVER['REQUEST_URI']);
+		parse_str($parts['query'], $query);
+		$name = $query['user'];
 ?>
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -55,7 +59,7 @@
 		?>
 
             <div class= "group">
-                <input type="submit" name="Create" value="Create a Group" />
+                <input type="submit" name="Create" value="Create a New Group" />
             </div>
             <div class= "table">
                 <table>
@@ -72,7 +76,7 @@
 						}
 					}
 					?>
-                    <td><a href="<?php echo "addPerson.php?group=".$row['groups']?>">Add another Member</a></td>
+                    <td><a href="<?php echo "add_member.php?user=".$name."&group=".$row['groups'];?>">Add to this Group</a></td>
                     </tr>
                 </table>
             </div>

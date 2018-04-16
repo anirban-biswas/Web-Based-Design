@@ -1,6 +1,7 @@
 <!DOCTYPE html> 
 <html>
 
+
 <head> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,22 +16,33 @@
 <body>
     <section>
 <div  class="icon-bar" >
-      <a class="active" href="main.html"><i class="fa fa-home fa-2x"></i>Home</a>
+      <a class="active" href="index.php"><i class="fa fa-home fa-2x"></i>Home</a>
       <a href="profile.php"><i class="fa fa-user fa-2x"></i>Profile</a> 
       <a href="inbox.php"><i class="fa fa-comments fa-2x"></i>Inbox</a> 
       <a href="groups.php"><i class="fa fa-users fa-2x"></i>Groups</a>
       <a href="people.php"><i class="fa fa-user-plus fa-2x"></i>People</a>
       <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Log out</a> 
 </div>
-  
+  <?php
+		$takeQuery = "SELECT `subject` FROM `taking` WHERE `user` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."'";
+		if($tquery_run = mysqli_query($conn, $takeQuery))
+		{
+			$count = 0;
+			while($trow = mysqli_fetch_assoc($tquery_run))
+			{
+				$count++;
+				$subQuery = "SELECT `name` FROM `subject` WHERE `id` = '".mysqli_real_escape_string($conn, $trow['subject'])."'";
+				if ($subQuery_run = mysqli_query($conn, $subQuery))
+				{
+					$subrow = mysqli_fetch_assoc($subQuery_run);
+					
+  ?>
 
+  
   <div class="dropdown">
   <button onclick="dropDown()" class="dropbtn">Select a topic</button>
   <div id="dropDown" class="dropdown-content">
-    <button onclick="btnResult()">Topic 1</button>
-    <button onclick="btnResult()">Topic 2</button>
-    <button onclick="btnResult()">Topic 3</button>
-    <button onclick="btnResult()">Topic 4</button>
+    <button onclick="btnResult()"><?php echo $subrow['name']; ?></button>
   </div>
 </div>
 
@@ -51,6 +63,11 @@
         </div>
         
 </div>
+<?php
+				}
+			}
+		}
+?>
 
 <script>
 function dropDown() {

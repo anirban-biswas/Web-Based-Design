@@ -2,6 +2,10 @@
 	<?php
 		require 'connect.php';
 		require 'core.php';
+		
+		$parts = parse_url($_SERVER['REQUEST_URI']);
+		parse_str($parts['query'], $query);
+		$name = $query['user'];
 	?>
 
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -25,7 +29,7 @@
         
     <a href="index.php"><h1 class="title titlebg position">Study Group</h1></a>
     <?php
-		$query = "SELECT * FROM `user` WHERE `username` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."'";
+		$query = "SELECT * FROM `user` WHERE `username` = '".mysqli_real_escape_string($conn, $name)."'";
 		if($query_run = mysqli_query($conn, $query))
 		{
 			$row = mysqli_fetch_assoc($query_run);
