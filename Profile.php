@@ -32,11 +32,11 @@
       <p>Major</p>
       </div>
 
-      <a href="editprofile.html"><button class="profileButton">Edit Profile</button></a>
+      <a href="editprofile.php"><button class="profileButton">Edit Profile</button></a>
       
 
     <div class="skills">
-    <a href="editskills.html"><button>Edit Skills</button></a>
+    <a href="editskills.php"><button>Edit Skills</button></a>
     
       <table>
           <tr>
