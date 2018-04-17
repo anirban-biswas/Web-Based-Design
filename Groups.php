@@ -34,7 +34,15 @@
 				echo 'join a group, nerd';
 			}
 			else{
-				while ($row = mysqli_fetch_assoc($query_run))
+				
+		?>
+
+            <div class= "group">
+                <input type="submit" name="Create" value="Create a Group" />
+            </div>
+            <div class= "table">
+			<?php
+			while ($row = mysqli_fetch_assoc($query_run))
 				{
 					$gquery = "SELECT * FROM `groups` WHERE `id` = '".mysqli_real_escape_string($conn, $row['groups'])."'";
 					if($gquery_run = mysqli_query($conn, $gquery))
@@ -50,14 +58,8 @@
 						$groupName = 'Un-Named Group';
 					}
 					if($mquery_run = mysqli_query($conn, $mquery))
-					{
+					{ ?>
 						
-		?>
-
-            <div class= "group">
-                <input type="submit" name="Create" value="Create a Group" />
-            </div>
-            <div class= "table">
                 <table>
                 <tr>
                     <th colspan= "2"><?php echo $groupName; ?></th>
@@ -75,10 +77,7 @@
                     <td><a href="<?php echo "addPerson.php?group=".$row['groups']?>">Add another Member</a></td>
                     </tr>
                 </table>
-            </div>
-            </section>
-    </body>
-	<?php
+				<?php
 						}
 						else
 						{ echo 'error connecting'; }
@@ -87,4 +86,8 @@
 			}
 		}
 	?>
+            </div>
+            </section>
+    </body>
+	
     </html>
