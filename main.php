@@ -28,13 +28,6 @@
 		if($tquery_run = mysqli_query($conn, $takeQuery))
 		{
 			$count = 0;
-			while($trow = mysqli_fetch_assoc($tquery_run))
-			{
-				$count++;
-				$subQuery = "SELECT `name` FROM `subject` WHERE `id` = '".mysqli_real_escape_string($conn, $trow['subject'])."'";
-				if ($subQuery_run = mysqli_query($conn, $subQuery))
-				{
-					$subrow = mysqli_fetch_assoc($subQuery_run);
 					
   ?>
 
@@ -42,7 +35,21 @@
   <div class="dropdown">
   <button onclick="dropDown()" class="dropbtn">Select a topic</button>
   <div id="dropDown" class="dropdown-content">
+  <?php
+  while($trow = mysqli_fetch_assoc($tquery_run))
+			{
+				$count++;
+				$subQuery = "SELECT `name` FROM `subject` WHERE `id` = '".mysqli_real_escape_string($conn, $trow['subject'])."'";
+				if ($subQuery_run = mysqli_query($conn, $subQuery))
+				{
+					$subrow = mysqli_fetch_assoc($subQuery_run);
+					?>
     <button onclick="btnResult()"><?php echo $subrow['name']; ?></button>
+	<?php 
+				}
+			}
+		}
+			?>
   </div>
 </div>
 
@@ -64,9 +71,7 @@
         
 </div>
 <?php
-				}
-			}
-		}
+	//	}
 ?>
 
 <script>
