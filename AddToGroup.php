@@ -38,7 +38,14 @@
 				echo 'join a group, nerd';
 			}
 			else{
-				while ($row = mysqli_fetch_assoc($query_run))
+?>
+
+            <div class= "group">
+                <input type="submit" name="Create" value="Create a New Group" />
+            </div>
+            <div class= "table">
+			<?php
+							while ($row = mysqli_fetch_assoc($query_run))
 				{
 					$gquery = "SELECT * FROM `groups` WHERE `id` = '".mysqli_real_escape_string($conn, $row['groups'])."'";
 					if($gquery_run = mysqli_query($conn, $gquery))
@@ -54,19 +61,13 @@
 						$groupName = 'Un-Named Group';
 					}
 					if($mquery_run = mysqli_query($conn, $mquery))
-					{
-						
-		?>
-
-            <div class= "group">
-                <input type="submit" name="Create" value="Create a New Group" />
-            </div>
-            <div class= "table">
+					{ 
+				$mem_num= mysqli_num_rows($mquery_run);?>
                 <table>
                 <tr>
                     <th colspan= "2"><?php echo $groupName; ?></th>
                     <tr/><tr>
-                    <th rowspan= "3">Members</th>
+                    <th rowspan= "<?php echo $mem_num+1; ?>">Members</th>
 					<?php while($mrow = mysqli_fetch_assoc($mquery_run))
 					{
 						if($mrow['user'] != $_SESSION['user_name'])
@@ -79,10 +80,7 @@
                     <td><a href="<?php echo "add_member.php?user=".$name."&group=".$row['groups'];?>">Add to this Group</a></td>
                     </tr>
                 </table>
-            </div>
-            </section>
-    </body>
-	<?php
+				<?php
 						}
 						else
 						{ echo 'error connecting'; }
@@ -91,4 +89,8 @@
 			}
 		}
 	?>
+            </div>
+            </section>
+    </body>
+	
     </html>

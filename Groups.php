@@ -58,13 +58,14 @@
 						$groupName = 'Un-Named Group';
 					}
 					if($mquery_run = mysqli_query($conn, $mquery))
-					{ ?>
+					{ 
+				$mem_num= mysqli_num_rows($mquery_run);?>
 						
                 <table>
                 <tr>
                     <th colspan= "2"><?php echo $groupName; ?></th>
                     <tr/><tr>
-                    <th rowspan= "3">Members</th>
+                    <th rowspan= "<?php echo $mem_num+1; ?>">Members</th>
 					<?php while($mrow = mysqli_fetch_assoc($mquery_run))
 					{
 						if($mrow['user'] != $_SESSION['user_name'])

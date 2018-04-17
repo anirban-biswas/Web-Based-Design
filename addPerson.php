@@ -38,7 +38,10 @@
 				echo 'get some friends, nerd';
 			}
 			else{
-				while ($row = mysqli_fetch_assoc($query_run))
+				?>
+            <div class= "table">
+			<?php
+			while ($row = mysqli_fetch_assoc($query_run))
 				{
 					$uquery = "SELECT * FROM `user` WHERE `username` = '".mysqli_real_escape_string($conn, $row['following'])."'";
 					if($uquery_run = mysqli_query($conn, $uquery))
@@ -60,7 +63,6 @@
 						}
 						$subIDquery = "SELECT `subject` FROM "
 		?>	
-            <div class= "table">
                 <table>
                 <tr><?php $url = "viewProfile.php?user=".$following; ?>
                     <th>User Name</th>
@@ -72,17 +74,18 @@
                     <th>Strength of User</th>
                     <td>Name of the Subjects</td>
                     </tr><tr>
-                    <th colspan="2" class = "formbox"><input type="submit" name="Unfollow" value="Unfollow" /><a href = "<?php echo "add_member.php?user=".$following."&group=".$group; ?>" class="button"> Add This User </a></th>
+                    <th colspan="2" class = "formbox"><a href = "<?php echo "unfollow.php?user=".$following; ?>" class="button"> Unfollow </a><a href = "<?php echo "add_member.php?user=".$following."&group=".$group; ?>" class="button"> Add This User </a></th>
                     </tr>
                 </table>
-            </div>
-        </section>
-    </body>
-	<?php
+				<?php
 						
 					}
 				}
 			}
 		}
 		?>
+            </div>
+        </section>
+    </body>
+	
     </html>
