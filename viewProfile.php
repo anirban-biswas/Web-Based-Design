@@ -2,6 +2,10 @@
 	<?php
 		require 'connect.php';
 		require 'core.php';
+		
+		$parts = parse_url($_SERVER['REQUEST_URI']);
+		parse_str($parts['query'], $query);
+		$name = $query['user'];
 	?>
 
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -25,7 +29,13 @@
         
     <a href="index.php"><h1 class="title titlebg position">Study Group</h1></a>
     <?php
-		$query = "SELECT * FROM `user` WHERE `username` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."'";
+	$fquery = "Select * FROM `follows` WHERE `follower` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."' AND `following` = '".mysqli_real_escape_string($conn, $name)."'";
+	if($fquery_run = mysqli_query($conn, $fquery))
+	{
+		$frow = mysqli_fetch_assoc($fquery_run);
+		$frow_num = mysqli_num_rows($fquery_run);
+	}
+		$query = "SELECT * FROM `user` WHERE `username` = '".mysqli_real_escape_string($conn, $name)."'";
 		if($query_run = mysqli_query($conn, $query))
 		{
 			$row = mysqli_fetch_assoc($query_run);
@@ -48,7 +58,13 @@
       <p><?php echo $school ?></p>
       <p><?php echo $row['First Name']." ".$row['Last Name'] ?></p>
       <hr>
-      <button>Edit profile</button>
+	  <?php
+	  $name = $row['username'];
+	  if($frow_num == 0)
+		  echo 	'<div class = "table"> <tr><td><a href = "follow.php?user='.$name.'"> Follow </a></td></tr></table>';						//'<form action = "get"><button type = "submit" formaction ="follow.php?user='.$name.'">Follow</button></form>';
+	  else
+		  echo 	'<div class = "table"> <tr><td><a href = "unfollow.php?user='.$name.'"> Unfollow </a></td></tr></table>';						//'<form action = "get"><button type = "submit" formaction ="unfollow.php?user='.$name.'">Unfollow</button> </form>';
+	  ?>
     </div>
 
     <div class="skills">
@@ -64,7 +80,6 @@
             <p>Topic 1</p>
             <p>Topic 2</p>
          </div>
-         <button>Edit Skills</button>
     </div>
         
     </body>

@@ -13,6 +13,7 @@ function loggedin() {
 		return true;
 	}
 	else { return false; }
+	
 }
 
 function getuserfield($conn, $field)

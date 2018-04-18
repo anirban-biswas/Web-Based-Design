@@ -1,7 +1,11 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <?php
 	require 'core.php';
 	require 'connect.php';
+	
+	$parts = parse_url($_SERVER['REQUEST_URI']);
+		parse_str($parts['query'], $query);
+		$name = $query['user'];
 ?>
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -34,15 +38,14 @@
 				echo 'join a group, nerd';
 			}
 			else{
-				
-		?>
+?>
 
             <div class= "group">
-                <input type="submit" name="Create" value="Create a Group" />
+                <input type="submit" name="Create" value="Create a New Group" />
             </div>
             <div class= "table">
 			<?php
-			while ($row = mysqli_fetch_assoc($query_run))
+							while ($row = mysqli_fetch_assoc($query_run))
 				{
 					$gquery = "SELECT * FROM `groups` WHERE `id` = '".mysqli_real_escape_string($conn, $row['groups'])."'";
 					if($gquery_run = mysqli_query($conn, $gquery))
@@ -60,7 +63,6 @@
 					if($mquery_run = mysqli_query($conn, $mquery))
 					{ 
 				$mem_num= mysqli_num_rows($mquery_run);?>
-						
                 <table>
                 <tr>
                     <th colspan= "2"><?php echo $groupName; ?></th>
@@ -75,7 +77,7 @@
 						}
 					}
 					?>
-                    <td><a href="<?php echo "addPerson.php?group=".$row['groups']?>">Add another Member</a></td>
+                    <td><a href="<?php echo "add_member.php?user=".$name."&group=".$row['groups'];?>">Add to this Group</a></td>
                     </tr>
                 </table>
 				<?php
