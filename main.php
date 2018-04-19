@@ -48,7 +48,7 @@
 	<?php 
 				}
 			}
-		}
+		//}
 			?>
   </div>
 </div>
@@ -70,14 +70,13 @@
         </div>
         
 </div>
-<?php
-	//	}
-?>
+
 
 <script>
 function dropDown() {
     document.getElementById("dropDown").classList.toggle("show");
 }
+
 window.onclick = function(event) {
   if (!event.target.matches('.dropbtn')) {
     var dropdown = document.getElementsByClassName("dropdown-content");
@@ -96,6 +95,9 @@ function btnResult() {
 }
 
 </script>
+<?php
+		}
+?>
 </section>
 </body>
 </html>
