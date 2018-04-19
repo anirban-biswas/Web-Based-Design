@@ -13,7 +13,7 @@
 
 
 <body>
-    <section>
+	
 <div  class="icon-bar" >
       <a class="active" href="main.html"><i class="fa fa-home fa-2x"></i>Home</a>
       <a href="profile.php"><i class="fa fa-user fa-2x"></i>Profile</a> 
@@ -24,17 +24,15 @@
 </div>
 	    
 <div>
-  <a href="main.html"><h1 class= "title titlebg">Study Group</h1></a>
+  <a href="main.php"><h1 class= "title titlebg">Study Group</h1></a>
 </div>
   
 
-  <div class="dropdown">
+<div class="dropdown">
   <button onclick="dropDown()" class="dropbtn">Select a topic</button>
   <div id="dropDown" class="dropdown-content">
     <button onclick="btnResult()">Topic 1</button>
     <button onclick="btnResult()">Topic 2</button>
-    <button onclick="btnResult()">Topic 3</button>
-    <button onclick="btnResult()">Topic 4</button>
   </div>
 </div>
 
@@ -52,8 +50,7 @@
           <h4>Weaknesses</h4>
           <p>Topic 1</p>
           <p>Topic 2</p>
-        </div>
-        
+        </div>   
 </div>
 
 <script>
@@ -81,6 +78,6 @@ function btnResult() {
 }
 
 </script>
-</section>
+
 </body>
 </html>
