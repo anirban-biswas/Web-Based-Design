@@ -101,13 +101,7 @@
 		}
 	?>
             </div>
-			<script>
-			function createGroup()
-			{
-				<?php include 'createGroup.php' ?>
-			}
 			
-			</script>
 			
             </section>
     </body>
