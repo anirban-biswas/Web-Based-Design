@@ -62,7 +62,9 @@
 				$mem_num= mysqli_num_rows($mquery_run);?>
 						
                 <table>
-                <tr>
+                <tr class= "gap">
+                    <th colspan = "2" ></th>
+                    <tr/><tr class = "links">
                     <th colspan= "2"><?php echo $groupName; ?></th>
                     <tr/><tr>
                     <th rowspan= "<?php echo $mem_num+1; ?>">Members</th>
@@ -75,7 +77,7 @@
 						}
 					}
 					?>
-                    <td><a href="<?php echo "addPerson.php?group=".$row['groups']?>">Add another Member</a></td>
+                    <td><a href="<?php echo "addPerson.php?group=".$row['groups']?>">Add Member</a></td>
                     </tr>
                 </table>
 				<?php

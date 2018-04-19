@@ -59,17 +59,20 @@
 						$subIDquery = "SELECT `subject` FROM "
 		?>
                 <table>
-                <tr><?php $url = "viewProfile.php?user=".$following; ?>
+                <tr class= "gap">
+                    <th colspan = "2" ></th>
+                    <tr/>
+                    <tr><?php $url = "viewProfile.php?user=".$following; ?>
                     <th>User Name</th>
                     <td><a href=<?php echo $url; ?>> "<?php echo $following; ?>" </a></td>
                     <tr/><tr>
                     <th>School Name</th>
                     <td><?php echo $school; ?></td>
                     <tr/><tr>
-                    <th>Strength of User</th>
-                    <td>Name of the Subjects</td>
-                    </tr><tr>
-                    <th colspan="2" class = "formbox"><a href = "<?php echo "unfollow.php?user=".$following; ?>" class="button"> Unfollow </a><a href = "<?php echo "AddToGroup.php?user=".$following; ?>" class="button"> Add To Group </a></th>
+                    <th rowspan = "1">Subject</th>
+                    <td>Name of the Subject</td>
+                    </tr><tr class = "links">
+                    <th><a href = "<?php echo "unfollow.php?user=".$following; ?>" class="button"> Unfollow </a></th><th><a href = "<?php echo "AddToGroup.php?user=".$following; ?>" class="button"> Add To Group </a></th>
                     </tr>
                 </table>
 				<?php
