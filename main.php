@@ -22,6 +22,10 @@
       <a href="people.php"><i class="fa fa-user-plus fa-2x"></i>People</a>
       <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Log out</a> 
 </div>
+	    
+<div>
+  <a href="main.html"><h1 class= "title titlebg">Study Group</h1></a>
+</div>
   
 
   <div class="dropdown">
@@ -57,12 +61,15 @@ function dropDown() {
     document.getElementById("dropDown").classList.toggle("show");
 }
 window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
+  if (!event.target.matches('.dropbtn')) 
+  {
     var dropdown = document.getElementsByClassName("dropdown-content");
     var i;
-    for (i = 0; i < dropdown.length; i++) {
+    for (i = 0; i < dropdown.length; i++) 
+    {
       var openDropdown = dropdown[i];
-      if (openDropdown.classList.contains('show')) {
+      if (openDropdown.classList.contains('show')) 
+      {
         openDropdown.classList.remove('show');
       }
     }
