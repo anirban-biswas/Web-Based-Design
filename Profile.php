@@ -22,21 +22,23 @@
       <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Sign out</a> 
    </div>
 
-   <a href="main.html"><h1 class="title titlebg position">Study Group</h1></a>
+   <a href="main.html"><h1 class="title titlebg">Study Group</h1></a>
     
     
       <img class="profileImage" src="avatar.png"/>
+
       <div class="ProfileBox">
-      <p>Name</p>
+      <h3>Name</h3>
       <p>College</p>
       <p>Major</p>
+      <a href="editprofile.html"><button>Edit Profile</button></a>
       </div>
 
-      <a href="editprofile.php"><button class="profileButton">Edit Profile</button></a>
-      
+      <a href="#InsertLinkHere"><button id="follow" class="followButton" onclick="followUnfollow()">Follow</button></a>
+
 
     <div class="skills">
-    <a href="editskills.php"><button>Edit Skills</button></a>
+    <h3>Skills</h3>
     
       <table>
           <tr>
@@ -54,23 +56,26 @@
             <td>Strength 1, Strength2...</td>
             <td>Weakness 1, Weaknss2...</td>
           </tr>
-          <tr>
-            <td>Subject 3</td>
-            <td>Strength 1, Strength2...</td>
-            <td>Weakness 1, Weaknss2...</td>
-          </tr>
-          <tr>
-            <td>Subject 4</td>
-            <td>Strength 1, Strength2...</td>
-            <td>Weakness 1, Weaknss2...</td>
-          </tr>
-          <tr>
-            <td>Subject 5</td>
-            <td>Strength 1, Strength2...</td>
-            <td>Weakness 1, Weaknss2...</td>
-          </tr>
         </table>
+
+        <a href="editskills.php"><button>Edit Skills</button></a>
     </div>
+
+    <script type="text/javascript">
+      
+      function followUnfollow(){
+
+      var button = document.getElementById("follow");
+      var buttonContent = button.textContent;
+
+      if(buttonContent == "Follow"){
+        button.innerHTML = "Unfollow";
+      }
+      else{
+        button.innerHTML = "Follow";
+      }
+    }
+    </script>
     
 
 </body>
