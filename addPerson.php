@@ -3,6 +3,10 @@
 	<?php
 	require 'core.php';
 	require 'connect.php';
+	
+	$parts = parse_url($_SERVER['REQUEST_URI']);
+		parse_str($parts['query'], $query);
+		$group = $query['group'];
 	?>
 
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -34,8 +38,9 @@
 				echo 'get some friends, nerd';
 			}
 			else{
-					
-            ?><div class= "table"><?php
+				?>
+            <div class= "table">
+			<?php
 			while ($row = mysqli_fetch_assoc($query_run))
 				{
 					$uquery = "SELECT * FROM `user` WHERE `username` = '".mysqli_real_escape_string($conn, $row['following'])."'";
@@ -57,22 +62,19 @@
 						$school = 'N/A';
 						}
 						$subIDquery = "SELECT `subject` FROM "
-		?>
+		?>	
                 <table>
-                <tr class= "gap">
-                    <th colspan = "2" ></th>
-                    <tr/>
-                    <tr><?php $url = "viewProfile.php?user=".$following; ?>
+                <tr><?php $url = "viewProfile.php?user=".$following; ?>
                     <th>User Name</th>
                     <td><a href=<?php echo $url; ?>> "<?php echo $following; ?>" </a></td>
                     <tr/><tr>
                     <th>School Name</th>
                     <td><?php echo $school; ?></td>
                     <tr/><tr>
-                    <th rowspan = "1">Subject</th>
-                    <td>Name of the Subject</td>
-                    </tr><tr class = "links">
-                    <th><a href = "<?php echo "unfollow.php?user=".$following; ?>" class="button"> Unfollow </a></th><th><a href = "<?php echo "AddToGroup.php?user=".$following; ?>" class="button"> Add To Group </a></th>
+                    <th>Strength of User</th>
+                    <td>Name of the Subjects</td>
+                    </tr><tr>
+                    <th colspan="2" class = "formbox"><a href = "<?php echo "unfollow.php?user=".$following; ?>" class="button"> Unfollow </a><a href = "<?php echo "add_member.php?user=".$following."&group=".$group; ?>" class="button"> Add This User </a></th>
                     </tr>
                 </table>
 				<?php

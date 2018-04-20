@@ -1,7 +1,11 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <?php
 	require 'core.php';
 	require 'connect.php';
+	
+	$parts = parse_url($_SERVER['REQUEST_URI']);
+		parse_str($parts['query'], $query);
+		$name = $query['user'];
 ?>
     <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -34,15 +38,14 @@
 				echo 'join a group, nerd';
 			}
 			else{
-				
-		?>
+?>
 
-            <div class= "group" >
-                <a href = "createGroup.php" class = "button">Create a New Group</a>
+            <div class= "group">
+                <input type="submit" name="Create" value="Create a New Group" />
             </div>
             <div class= "table">
 			<?php
-			while ($row = mysqli_fetch_assoc($query_run))
+							while ($row = mysqli_fetch_assoc($query_run))
 				{
 					$gquery = "SELECT * FROM `groups` WHERE `id` = '".mysqli_real_escape_string($conn, $row['groups'])."'";
 					if($gquery_run = mysqli_query($conn, $gquery))
@@ -60,35 +63,23 @@
 					if($mquery_run = mysqli_query($conn, $mquery))
 					{ 
 				$mem_num= mysqli_num_rows($mquery_run);?>
-						
                 <table>
                 <tr class= "gap">
                     <th colspan = "2" ></th>
                     <tr/><tr class = "links">
                     <th colspan= "2"><?php echo $groupName; ?></th>
                     <tr/><tr>
-					<?php
-						if($mem_num == 1)
+                    <th rowspan= "<?php echo $mem_num+1; ?>">Members</th>
+					<?php while($mrow = mysqli_fetch_assoc($mquery_run))
+					{
+						if($mrow['user'] != $_SESSION['user_name'])
 						{
-							echo '<th rowspan= "2">Members</th>';
-							echo '<td> NO OTHER MEMBERS </td>';
-							echo '<tr>';
-						}
-						else
-						{
-					?>
-						<th rowspan= "<?php echo $mem_num; ?>">Members</th>
-						<?php while($mrow = mysqli_fetch_assoc($mquery_run))
-						{
-							if($mrow['user'] != $_SESSION['user_name'])
-							{
-							echo '<td><a href = "viewProfile.php?user='. $mrow['user'] .'">'.$mrow['user'].'</a></td>';
-							echo '<tr>';
-							}
+						echo "<td>". $mrow['user'] ."</td>";
+						echo "<tr>";
 						}
 					}
-						?>
-                    <td><a href="<?php echo "addPerson.php?group=".$row['groups']?>">Add Member</a></td>
+					?>
+                    <td><a href="<?php echo "add_member.php?user=".$name."&group=".$row['groups'];?>">Add to this Group</a></td>
                     </tr>
                 </table>
 				<?php
@@ -101,8 +92,6 @@
 		}
 	?>
             </div>
-			
-			
             </section>
     </body>
 	
