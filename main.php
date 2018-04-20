@@ -13,7 +13,7 @@
 
 
 <body>
-	
+<section>
 <div  class="icon-bar" >
       <a class="active" href="main.html"><i class="fa fa-home fa-2x"></i>Home</a>
       <a href="profile.php"><i class="fa fa-user fa-2x"></i>Profile</a> 
@@ -78,6 +78,7 @@ function btnResult() {
 }
 
 </script>
+</section>
 
 </body>
 </html>
