@@ -210,22 +210,18 @@ a{
     text-decoration: none;
 }
 
-.position{
-    top: 0;
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-}
-
 .titlebg{
-  background-color: rgba(143, 193, 36, 0.8);
-  height: 70px
+  background-color: #8FC124;
+  height: 75px
 }
 
 .title{
-    margin: 0 0 0 10px;
-    padding: 0 0 0 80px;
+    position: fixed;
+    margin: 0 0 0 80px;
+    padding: 0 0 0 10px;
     font-size: 55px;
+    width: 100%;
+    z-index: 1;
 }
 
 .icon-bar {
@@ -280,20 +276,22 @@ a{
 
 .dropdown-content {
     width: 800px;
+    height: 200px;
     background-color: rgba(14, 52, 3, 0.9) ;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     display: none;
     position: fixed;
-    overflow: visible;
     z-index: 1;
+    overflow-y:scroll;
+    overflow-x: hidden;
 }
 
 .dropdown-content button {
     width: 800px;
     text-align: center;
     background-color: rgba(14, 52, 3, 0.9) ;
-    color: white;
+    color: #fff;
     padding: 12px 16px;
     text-decoration: none;
     border: none;
@@ -308,7 +306,7 @@ a{
 }
 
 .resultbox{
-    margin: 200px 0 0 300px;
+    margin: 220px 0 0 300px;
     width:795px;
     height: 120px;
     background: white;
@@ -319,6 +317,7 @@ a{
     padding-top: 100px;
     visibility: hidden;
     z-index: -1;
+    height: auto;
 
 }
 
@@ -328,31 +327,30 @@ a{
     border-radius: 50%;
     position: absolute;
     margin-top: -95px;
-    left: calc(10% - 50px);
 }
 
 .resultbox h3{
     margin-top: -95px;
     margin-left: 150px;
-    padding: 0px;
+    width: auto;
     font-size: 22px;
     color: #ff6a00;
 }
 .resultbox p{
     margin-top: 10px;
     margin-left: 150px;
-    padding: 0px;
+    width: 300px;
     font-size: 16px;
 }
 
-.resultbox .strengths h4{
+.strengths h4{
     margin-top: -130px;
     margin-left: 450px;
     padding: 0px;
     color: #ff6a00;
 }
 
-.resultbox .strengths p{
+.strengths p{
     margin-top: -20px;
     margin-bottom: 20px;
     margin-left: 450px;
@@ -360,97 +358,114 @@ a{
     font-size: 16px;
 }
 
-.resultbox .weaknesses h4{
+.weaknesses h4{
     margin-top: -20px;
     margin-left: 450px;
     color: #ff6a00;
 }
 
-.resultbox .weaknesses p{
+.weaknesses p{
     margin-top: -20px;
     margin-left: 450px;
     margin-bottom: 20px;
     font-size: 16px;
 }
 
-.profile img{
-    width:100px;
-    height:100px;
+.profileImage{
+    width:120px;
+    height:120px;
     border-radius: 50%;
     margin-left: 250px;
-    margin-top: 100px;
+    margin-top: 120px;
 }
 
-.profile h3{
-    color: #ff6a00;
+.ProfileBox{
+    box-sizing: border-box;
+    height: 180px;
+    width: 45%;
+    border-radius: 20px;
+    box-shadow: 5px 10px 8px #888888;
     margin-left: 400px;
-    margin-top: -90px;
-    /*padding-top: 15px;*/
+    margin-top: -140px;
 }
 
-.profile p{
-    margin-left: 400px;
-    font-size: 14px;
-}
-
-hr{
-    margin-left: 390px;
-    width: 50%;
-    height: 2px;
-    background-color: #ff6a00;
-    border: none;
-}
-
-.profile button{
-    margin-left: 260px;
+.followButton {
+    margin-left: 270px;
     margin-top: -10px;
     color: white;
     background-color: #ff6a00;
     border: none;
-    padding: 10px 10px;
+    outline: none;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
  
 }
 
-.skills h3{
+.ProfileBox h3{
     color: #ff6a00;
+    margin-left: 12px;
+    margin-top: -90px;
+    padding-top: 15px;
+}
+
+.ProfileBox p{
+    position: relative;
     margin-top: 10px;
-    margin-left: 400px;
+    margin-left: 10px;
+    padding: 5px;
 }
 
-.skills h4{
-    margin-left: 400px;
-}
+.ProfileBox button{
 
-.boxed{
-    width: 45%;
-    height: 250px;
-    background-color: transparent;
-    margin-left: 400px;
-    border: 3px grey;
-    border-radius: 25px;
-    background-color: rgba(143, 193, 36, 0.8);
-}
-
-.boxed p{
-    padding-top: 10px;
-    margin-left: 30px;
-    font-size: 14px;
-}
-
-.skills button{
-    margin-left: 650px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: white;
+    position: relative;
+    margin-left: 260px;
+    margin-top: -20px;
+    color: #fff;
     background-color: #ff6a00;
     border: none;
-    padding: 10px 10px;
+    padding: 10px 15px;
     text-align: center;
     text-decoration: none;
 }
 
+.skills{
+    margin-left: 400px;
+}
+
+.skills h3{
+    color: #ff6a00;
+    margin-top: 40px;  
+}
+
+.skills table{
+    width: 670px;
+    border-collapse: collapse;
+    outline: none;
+}
+
+.skills td, th {
+    border: none;
+    text-align: left;
+    padding: 10px;
+    height: auto;
+}
+
+.skills tr:nth-child(even) {
+    background-color: #8FC124;
+}
+
+.skills button{
+    color: white;
+    background-color: #ff6a00;
+    border: none;
+    margin-left: 270px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+}
 
 button:hover
 {
@@ -459,3 +474,163 @@ button:hover
     color: white;
 }
 
+
+.ProfileBox input {
+    position: relative;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 5px;
+    height: auto;
+    border-radius:20px;
+    border: 1px solid  #8FC124;
+    background: #fff;
+    outline: none;
+}
+
+
+.skills input{
+    padding: 5px;
+    height: auto;
+    border-radius:20px;
+    border: 1px solid  #8FC124;
+    outline: none;
+}
+
+h6{
+    margin-left: 500px;
+    margin-top: 400px;
+    position: absolute;
+}
+
+.inbox{
+    position: absolute;
+    width: 350px;
+    height: 650px;
+    margin-left: 80px;
+    margin-top: 75px;
+    background-color: #fff;
+    z-index: -1;
+    overflow-y:scroll;
+    overflow-x: hidden;
+}
+
+.messagebox{
+    box-sizing: border-box;
+    width: 350px;
+    height: 100px;
+    background-color: #fff;
+}
+
+.messagebox:hover{
+    background-color: rgba(86,61,124,.1);
+    cursor: pointer;
+}
+
+.messagebox img{
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.messagebox h3{
+    color: #ff6a00;
+    margin-top: -65px;
+    margin-left: 100px;
+    margin-bottom: 0px;
+}
+
+.messagebox p{
+    margin-top: 1px;
+    margin-left: 100px;
+}
+
+.chatbox{
+    margin-left: 430px;
+    visibility: hidden;
+}
+
+.chatbox h3{
+    right: 0;
+    width: 933px;
+    position: absolute;
+    color: #fff;
+    text-align: center;
+    margin-top: 70px;
+    padding: 10px;
+    background-color: #ff6a00;
+}
+
+.chatboxMessages{
+    right: 0;
+    position: absolute;
+    width: 950px;
+    height: 520px;
+    margin-top: 72px;
+    background-color: #fff;
+    border-bottom: 1.5px solid #ff6a00;
+    z-index: -1;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.send p {
+    position: absolute;
+    float: right;
+    margin-top: 50px;
+    margin-left: 510px;
+    margin-right: 20px;
+    box-sizing: border-box;
+    width: 400px;
+    height: auto;
+    background-color: #8FC124;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px;
+}
+
+.receive {
+    position: absolute;
+    float: left;
+    margin-top: 120px;
+    margin-left: 10px;
+    margin-right: 0px;
+    box-sizing: border-box;
+    width: 400px;
+    height: auto;
+    background-color: rgba(14, 52, 3, 0.9);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px;
+}
+
+.typeMessage textarea{
+    position: absolute;
+    margin-top: 600px;
+    margin-left: 10px;
+    width: 830px;
+    height: 50px;
+    padding-top: 0px;
+    border: none;
+    outline: none;
+    margin-bottom: 0px;
+}
+
+.typeMessage button{
+    position: absolute;
+    margin-left: 850px;
+    margin-top: 600px;
+    width: 50px;
+    height: 50px;
+    background-color: #ff6a00;
+    color: #fff;
+    border: none;
+    width: 100px;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+}
