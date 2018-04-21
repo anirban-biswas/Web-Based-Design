@@ -41,7 +41,7 @@
 ?>
 
             <div class= "group">
-                <input type="submit" name="Create" value="Create a New Group" />
+                <a><input type="submit" name="Create" value="Create a New Group" /></a>
             </div>
             <div class= "table">
 			<?php
@@ -67,7 +67,11 @@
                 <tr class= "gap">
                     <th colspan = "2" ></th>
                     <tr/><tr class = "links">
-                    <th colspan= "2"><?php echo $groupName; ?></th>
+                    <th colspan= "2"><?php echo $groupName; ?>
+                    </th><tr class = "links"><th colspan= "2"><button type= "button">
+                    <a href = "#">Name Group</a></button><button type= "button"><a href = "#">Leave Group</a>
+                    </button>
+                    </th>
                     <tr/><tr>
                     <th rowspan= "<?php echo $mem_num+1; ?>">Members</th>
 					<?php while($mrow = mysqli_fetch_assoc($mquery_run))
