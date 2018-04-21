@@ -14,7 +14,7 @@
 
 
 <body>
-    <section>
+<section>
 <div  class="icon-bar" >
       <a class="active" href="index.php"><i class="fa fa-home fa-2x"></i>Home</a>
       <a href="profile.php"><i class="fa fa-user fa-2x"></i>Profile</a> 
@@ -23,6 +23,12 @@
       <a href="people.php"><i class="fa fa-user-plus fa-2x"></i>People</a>
       <a href="logout.php"><i class="fa fa-sign-out fa-2x"></i>Log out</a> 
 </div>
+
+	    
+<div>
+  <a href="index.php"><h1 class= "title titlebg">Study Group</h1></a>
+</div>
+  
   <?php
 		$takeQuery = "SELECT `subject` FROM `taking` WHERE `user` = '".mysqli_real_escape_string($conn, $_SESSION['user_name'])."'";
 		if($tquery_run = mysqli_query($conn, $takeQuery))
@@ -30,12 +36,12 @@
 			$count = 0;
 					
   ?>
-
   
-  <div class="dropdown">
+
+<div class="dropdown">
   <button onclick="dropDown()" class="dropbtn">Select a topic</button>
   <div id="dropDown" class="dropdown-content">
-  <?php
+    <?php
   while($trow = mysqli_fetch_assoc($tquery_run))
 			{
 				$count++;
@@ -44,12 +50,13 @@
 				{
 					$subrow = mysqli_fetch_assoc($subQuery_run);
 					?>
-    <button onclick="btnResult()"><?php echo $subrow['name']; ?></button>
+   <button onclick="btnResult()"><?php echo $subrow['name']; ?></button>
 	<?php 
 				}
 			}
-		}
+		//}
 			?>
+
   </div>
 </div>
 
@@ -67,24 +74,25 @@
           <h4>Weaknesses</h4>
           <p>Topic 1</p>
           <p>Topic 2</p>
-        </div>
-        
+        </div>   
 </div>
-<?php
-	//	}
-?>
+
 
 <script>
 function dropDown() {
     document.getElementById("dropDown").classList.toggle("show");
 }
+
 window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
+  if (!event.target.matches('.dropbtn')) 
+  {
     var dropdown = document.getElementsByClassName("dropdown-content");
     var i;
-    for (i = 0; i < dropdown.length; i++) {
+    for (i = 0; i < dropdown.length; i++) 
+    {
       var openDropdown = dropdown[i];
-      if (openDropdown.classList.contains('show')) {
+      if (openDropdown.classList.contains('show')) 
+      {
         openDropdown.classList.remove('show');
       }
     }
@@ -96,6 +104,10 @@ function btnResult() {
 }
 
 </script>
+<?php
+		}
+?>
 </section>
+
 </body>
 </html>

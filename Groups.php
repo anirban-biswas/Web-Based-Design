@@ -37,8 +37,8 @@
 				
 		?>
 
-            <div class= "group">
-                <input type="submit" name="Create" value="Create a Group" />
+            <div class= "group" >
+                <a href = "createGroup.php" class = "button">Create a New Group</a>
             </div>
             <div class= "table">
 			<?php
@@ -67,16 +67,27 @@
                     <tr/><tr class = "links">
                     <th colspan= "2"><?php echo $groupName; ?></th>
                     <tr/><tr>
-                    <th rowspan= "<?php echo $mem_num+1; ?>">Members</th>
-					<?php while($mrow = mysqli_fetch_assoc($mquery_run))
-					{
-						if($mrow['user'] != $_SESSION['user_name'])
+					<?php
+						if($mem_num == 1)
 						{
-						echo "<td>". $mrow['user'] ."</td>";
-						echo "<tr>";
+							echo '<th rowspan= "2">Members</th>';
+							echo '<td> NO OTHER MEMBERS </td>';
+							echo '<tr>';
+						}
+						else
+						{
+					?>
+						<th rowspan= "<?php echo $mem_num; ?>">Members</th>
+						<?php while($mrow = mysqli_fetch_assoc($mquery_run))
+						{
+							if($mrow['user'] != $_SESSION['user_name'])
+							{
+							echo '<td><a href = "viewProfile.php?user='. $mrow['user'] .'">'.$mrow['user'].'</a></td>';
+							echo '<tr>';
+							}
 						}
 					}
-					?>
+						?>
                     <td><a href="<?php echo "addPerson.php?group=".$row['groups']?>">Add Member</a></td>
                     </tr>
                 </table>
@@ -90,6 +101,8 @@
 		}
 	?>
             </div>
+			
+			
             </section>
     </body>
 	
