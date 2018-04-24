@@ -43,6 +43,8 @@
             <div class= "group">
                 <a><input type="submit" name="Create" value="Create a New Group" /></a>
             </div>
+            <div class= "group2" >
+            <a href = "NameGroup.php" class = "button"><input type="submit" name="GiveName" value="Name the group" /></a></div>
             <div class= "table">
 			<?php
 							while ($row = mysqli_fetch_assoc($query_run))
@@ -68,8 +70,7 @@
                     <th colspan = "2" ></th>
                     <tr/><tr class = "links">
                     <th colspan= "2"><?php echo $groupName; ?>
-                    </th><tr class = "links"><th colspan= "2"><button type= "button">
-                    <a href = "#">Name Group</a></button><button type= "button"><a href = "#">Leave Group</a>
+                    </th><tr class = "links"><th colspan= "2"><button type= "button"><a href = "#">Leave Group</a>
                     </button>
                     </th>
                     <tr/><tr>
